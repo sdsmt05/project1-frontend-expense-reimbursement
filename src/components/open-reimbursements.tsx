@@ -1,5 +1,9 @@
+import Reimbursement from "../dtos/dtos";
 
-export default function OpenReimbursements(){
+export default function OpenReimbursements(props: {reimbursements: Reimbursement[]}){
 
-    return(<></>);
+    return(<>
+        <h3>Open Reimbursement Requests</h3>
+        
+    </>);
 }

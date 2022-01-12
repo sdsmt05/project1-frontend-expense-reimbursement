@@ -1,5 +1,7 @@
 
 export default function ManagerHomePage(){
 
-    return(<></>);
+    return(<>
+        <h1>Manager Home Page</h1>
+    </>);
 }
