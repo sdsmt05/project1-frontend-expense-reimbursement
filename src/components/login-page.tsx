@@ -34,7 +34,7 @@ export default function LoginPage(props: {updateUser: Function}){
         <label htmlFor="usernameInput">Username</label>
         <input ref={usernameInput} type="text" id="usernameInput" required/>
 
-        <label htmlFor="passwordInput">Username</label>
+        <label htmlFor="passwordInput">Password</label>
         <input ref={passwordInput} type="password" id="passwordInput" required/>
 
         <button onClick={login}>Login</button>

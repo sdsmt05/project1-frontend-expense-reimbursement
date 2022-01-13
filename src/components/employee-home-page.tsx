@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
-import Reimbursement from "../dtos/dtos";
+import Reimbursement, { IsApproved } from "../dtos/dtos";
+import ClosedReimbursements from "./closed-reimbursements";
+import OpenReimbursements from "./open-reimbursements";
 import ReimbursementForm from "./reimbursement-form";
-import ReimbursementTable from "./reimbursement-table";
 
 export default function EmployeeHomePage(){
 
-    const [reimbursements, setReimbursements] = useState<Reimbursement[]>([]);
+    const [openReimbursements, setOpenReimbursements] = useState<Reimbursement[]>([]);
+    const [closedReimbursements, setClosedReimbursements] = useState<Reimbursement[]>([]);
 
     useEffect(()=>{
         (async ()=>{
-            const response = await fetch("http://localhost:5000/reimbursements");
-            const reimbursements = await response.json();
-            setReimbursements(reimbursements);
+            const response = await fetch(`http://localhost:5000/reimbursements/${sessionStorage.getItem("id")}`);
+            const reimbursements: Reimbursement[] = await response.json();
+            setOpenReimbursements(reimbursements.filter(r => r.isApproved === "Pending"));
+            setClosedReimbursements(reimbursements.filter(r => r.isApproved !== "Pending"));
         })()
     },[])
 
@@ -19,8 +22,8 @@ export default function EmployeeHomePage(){
 
     return(<>
         <h1>Employee Home Page</h1>
-        <ReimbursementForm reimbursements={reimbursements} setReimbursements={setReimbursements}/>
-        <ReimbursementTable reimbursements={reimbursements}/>
-        
+        <ReimbursementForm reimbursements={openReimbursements} setReimbursements={setOpenReimbursements}/>
+        <OpenReimbursements reimbursements={openReimbursements}/>
+        <ClosedReimbursements reimbursements={closedReimbursements}/>        
     </>);
 }
