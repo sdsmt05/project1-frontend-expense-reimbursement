@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import Reimbursement, { IsApproved } from "../dtos/dtos";
+import Reimbursement from "../dtos/dtos";
+import ApproveReimbursements from "./approve-reimbursements";
 import ClosedReimbursements from "./closed-reimbursements";
 import OpenReimbursements from "./open-reimbursements";
 import ReimbursementForm from "./reimbursement-form";
@@ -23,5 +24,6 @@ export default function ManagerHomePage(){
         <ReimbursementForm reimbursements={openReimbursements} setReimbursements={setOpenReimbursements}/>
         <OpenReimbursements reimbursements={openReimbursements}/>
         <ClosedReimbursements reimbursements={closedReimbursements}/>
+        <ApproveReimbursements/>
     </>);
 }

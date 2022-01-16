@@ -23,6 +23,9 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
         if(!reimbursement.amount || !reimbursement.reason){
             alert("Invalid submission: Either the Amount or Reason is missing");
     
+        } else if(typeof reimbursement.amount !== "number"){
+            alert("Amount must be a number value");
+            
         } else {
             const response = await fetch('http://localhost:5000/reimbursements', {
                 method: 'POST',
