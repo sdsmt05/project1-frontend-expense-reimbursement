@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Reimbursement from "../dtos/dtos";
-import ApproveReimbursements from "./approve-reimbursements";
 import ClosedReimbursements from "./closed-reimbursements";
+import Header from "./header";
 import OpenReimbursements from "./open-reimbursements";
 import ReimbursementForm from "./reimbursement-form";
 
@@ -9,6 +10,7 @@ export default function ManagerHomePage(){
 
     const [openReimbursements, setOpenReimbursements] = useState<Reimbursement[]>([]);
     const [closedReimbursements, setClosedReimbursements] = useState<Reimbursement[]>([]);
+    const navigate = useNavigate();
 
     useEffect(()=>{
         (async ()=>{
@@ -19,11 +21,18 @@ export default function ManagerHomePage(){
         })()
     },[])
 
+
+    function goApprove(){
+        navigate("approve");
+    }
+
     return(<>
-        <h1>Manager Home Page</h1>
+        <Header/>
+        <h1 style={{color: "#6d6477"}}>Manager Home Page</h1>
         <ReimbursementForm reimbursements={openReimbursements} setReimbursements={setOpenReimbursements}/>
         <OpenReimbursements reimbursements={openReimbursements}/>
         <ClosedReimbursements reimbursements={closedReimbursements}/>
-        <ApproveReimbursements/>
-    </>);
+        <hr/>
+        <button onClick={goApprove}>Go To Approvals</button>
+    </>)
 }

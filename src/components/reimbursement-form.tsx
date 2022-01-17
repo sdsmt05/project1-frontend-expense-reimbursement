@@ -1,6 +1,5 @@
 import { useRef } from "react"
 import Reimbursement, { IsApproved } from "../dtos/dtos";
-import OpenReimbursements from "./open-reimbursements";
 
 export default function ReimbursementForm(props: {reimbursements: Reimbursement[], setReimbursements: Function}){
 
@@ -23,9 +22,6 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
         if(!reimbursement.amount || !reimbursement.reason){
             alert("Invalid submission: Either the Amount or Reason is missing");
     
-        } else if(typeof reimbursement.amount !== "number"){
-            alert("Amount must be a number value");
-            
         } else {
             const response = await fetch('http://localhost:5000/reimbursements', {
                 method: 'POST',
@@ -48,10 +44,10 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
     }
 
     return(<>
-        <h3>Reimbursement Submission Form</h3>
+        <h3 style={{color: "#606c76"}}>Reimbursement Submission Form</h3>
 
         <label htmlFor="amountInput">Amount</label>
-        <input ref={amountInput} type="text" id="amountInput" placeholder="50"/>
+        <input ref={amountInput} type="number" id="amountInput" placeholder="50"/>
         <label htmlFor="reasonInput">Reason</label>
         <input ref={reasonInput} type="text" id="reasonInput" placeholder="Gas"/>
 

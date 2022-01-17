@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Reimbursement from "../dtos/dtos";
 import ClosedReimbursements from "./closed-reimbursements";
+import Header from "./header";
 import OpenReimbursements from "./open-reimbursements";
 import ReimbursementForm from "./reimbursement-form";
 
@@ -21,7 +22,8 @@ export default function EmployeeHomePage(){
 
 
     return(<>
-        <h1>Employee Home Page</h1>
+        <Header/>
+        <h1 style={{color: "#6d6477"}}>Employee Home Page</h1>
         <ReimbursementForm reimbursements={openReimbursements} setReimbursements={setOpenReimbursements}/>
         <OpenReimbursements reimbursements={openReimbursements}/>
         <ClosedReimbursements reimbursements={closedReimbursements}/>        

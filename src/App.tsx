@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import EmployeeHomePage from './components/employee-home-page';
 import LoginPage from './components/login-page';
 import ManagerHomePage from './components/manager-home-page';
-import ReimbursementTable from './components/reimbursement-table';
 
 export default function App() {
   
