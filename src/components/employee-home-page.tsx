@@ -22,11 +22,13 @@ export default function EmployeeHomePage(){
 
 
     return(<>
+        {closedReimbursements ? <>
         <Header/>
         <h1 style={{color: "#6d6477"}}>Employee Home Page</h1>
         <ReimbursementForm reimbursements={openReimbursements} setReimbursements={setOpenReimbursements}/>
         <OpenReimbursements reimbursements={openReimbursements}/>
-        <ClosedReimbursements reimbursements={closedReimbursements}/>        
+        <ClosedReimbursements reimbursements={closedReimbursements}/>
+        </> : <h4>Loading...</h4>}     
     </>);
 
 }

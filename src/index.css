@@ -11,6 +11,40 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+input {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  text-align: center;
+}
+
+th {
+  color: #6d6477;
+}
+
+hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  height: 5px;
+  background-color: white;
+}
+
+h1, h3 {
+  text-align: center;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

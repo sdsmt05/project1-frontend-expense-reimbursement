@@ -13,19 +13,31 @@ export default function LoginPage(props: {updateUser: Function}){
             password: passwordInput.current.value
         }
 
-        const response = await fetch('http://localhost:5000/login', {
+        if(!loginInfo.username || !loginInfo.password){
+            alert("Either the Username or Password is missing.")
+        } else {
+
+            const response = await fetch('http://localhost:5000/login', {
             method: 'PATCH',
             body: JSON.stringify(loginInfo),
             headers: {'content-type': 'application/json'}
-        })
+            })
 
-        const user = await response.json();
-        props.updateUser({username: user.username, isManager: user.isManager});
 
-        sessionStorage.setItem("username", user.username);
-        sessionStorage.setItem("id", user.id);
-        sessionStorage.setItem("name", `${user.fname} ${user.lname}`);
-        sessionStorage.setItem("isManager", user.isManager);
+            if(response.status === 404) {
+                alert(`User with username ${loginInfo.username} could not be found`)
+            } else if (response.status === 401) {
+                alert("Invalid Password");
+            } else {
+                const user = await response.json();
+                props.updateUser({username: user.username, isManager: user.isManager});
+
+                sessionStorage.setItem("username", user.username);
+                sessionStorage.setItem("id", user.id);
+                sessionStorage.setItem("name", `${user.fname} ${user.lname}`);
+                sessionStorage.setItem("isManager", user.isManager);
+            }
+        }
     }
 
     return(<>

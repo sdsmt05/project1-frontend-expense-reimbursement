@@ -27,6 +27,7 @@ export default function ManagerHomePage(){
     }
 
     return(<>
+        {closedReimbursements ? <>
         <Header/>
         <h1 style={{color: "#6d6477"}}>Manager Home Page</h1>
         <ReimbursementForm reimbursements={openReimbursements} setReimbursements={setOpenReimbursements}/>
@@ -34,5 +35,6 @@ export default function ManagerHomePage(){
         <ClosedReimbursements reimbursements={closedReimbursements}/>
         <hr/>
         <button onClick={goApprove}>Go To Approvals</button>
+        </> : <h4>Loading...</h4>}
     </>)
 }
