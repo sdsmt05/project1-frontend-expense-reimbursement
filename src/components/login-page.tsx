@@ -25,9 +25,13 @@ export default function LoginPage(props: {updateUser: Function}){
 
 
             if(response.status === 404) {
-                alert(`User with username ${loginInfo.username} could not be found`)
+                alert(`User with username ${loginInfo.username} could not be found`);
+                usernameInput.current.value = "";
+                passwordInput.current.value = "";
             } else if (response.status === 401) {
                 alert("Invalid Password");
+                usernameInput.current.value = "";
+                passwordInput.current.value = "";
             } else {
                 const user = await response.json();
                 props.updateUser({username: user.username, isManager: user.isManager});
