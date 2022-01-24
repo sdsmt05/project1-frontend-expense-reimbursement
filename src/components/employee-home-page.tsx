@@ -12,7 +12,7 @@ export default function EmployeeHomePage(){
 
     useEffect(()=>{
         (async ()=>{
-            const response = await fetch(`http://localhost:5000/reimbursements/${sessionStorage.getItem("id")}`);
+            const response = await fetch(`https://proj1backend.azurewebsites.net/reimbursements/${sessionStorage.getItem("id")}`);
             const reimbursements: Reimbursement[] = await response.json();
             setOpenReimbursements(reimbursements.filter(r => r.isApproved === "Pending"));
             setClosedReimbursements(reimbursements.filter(r => r.isApproved !== "Pending"));

@@ -14,7 +14,7 @@ export default function ApproveReimbursementsRow(props: {reimbursement: Reimburs
         if(mgrInput.current.value)
             updatedReimbursement.mgrComment = mgrInput.current.value ;
 
-        const response = await fetch(`http://localhost:5000/reimbursements/${updatedReimbursement.id}`, {
+        const response = await fetch(`https://proj1backend.azurewebsites.net/reimbursements/${updatedReimbursement.id}`, {
             method: 'PUT',
             body: JSON.stringify(updatedReimbursement),
             headers: {'content-type': 'application/json'}

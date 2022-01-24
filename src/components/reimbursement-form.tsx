@@ -27,7 +27,7 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
             amountInput.current.value = "";
         }  else {
 
-            const response = await fetch('http://localhost:5000/reimbursements', {
+            const response = await fetch('https://proj1backend.azurewebsites.net/reimbursements', {
                 method: 'POST',
                 body: JSON.stringify(reimbursement),
                 headers: {

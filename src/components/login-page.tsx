@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { isEnumMember } from "typescript";
 
 export default function LoginPage(props: {updateUser: Function}){
 
@@ -17,7 +16,7 @@ export default function LoginPage(props: {updateUser: Function}){
             alert("Either the Username or Password is missing.")
         } else {
 
-            const response = await fetch('http://localhost:5000/login', {
+            const response = await fetch('https://proj1backend.azurewebsites.net/login', {
             method: 'PATCH',
             body: JSON.stringify(loginInfo),
             headers: {'content-type': 'application/json'}

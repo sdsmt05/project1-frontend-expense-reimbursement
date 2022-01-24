@@ -16,7 +16,7 @@ export default function ApproveReimbursements(){
 
     useEffect(()=>{
         (async ()=>{
-            const response = await fetch(`http://localhost:5000/reimbursements`);
+            const response = await fetch(`https://proj1backend.azurewebsites.net/reimbursements`);
             const reimbursements: Reimbursement[] = await response.json();
             setAllReimbursements(reimbursements);
             const allOpenReimbursements = reimbursements.filter(r => r.isApproved === "Pending");
