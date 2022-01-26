@@ -34,7 +34,7 @@ export default function ApproveReimbursementsRow(props: {reimbursement: Reimburs
 
     return(<tr>
         <td>{ownerName}</td>
-        <td>{amount}</td>
+        <td>${amount}</td>
         <td>{reason}</td>
         <td>{isApproved}</td>
         <td><input ref={mgrInput} type="text"/></td>

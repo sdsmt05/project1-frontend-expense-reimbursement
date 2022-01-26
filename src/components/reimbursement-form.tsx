@@ -1,10 +1,13 @@
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import Reimbursement, { IsApproved } from "../dtos/dtos";
 
 export default function ReimbursementForm(props: {reimbursements: Reimbursement[], setReimbursements: Function}){
 
+    const [selectedFile, setSelectedFile] = useState(null);
+    
     const amountInput = useRef(null);
     const reasonInput = useRef(null);
+    const fileInput = useRef(null);
 
     const {reimbursements, setReimbursements} = props;
 
@@ -19,13 +22,25 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
             isApproved: IsApproved.pending
         }
 
-
         if(!reimbursement.amount || !reimbursement.reason){
             alert("Invalid submission: Either the Amount or Reason is missing");
         } else if(reimbursement.amount <= 0){
             alert("Amount should be a positive number.");
             amountInput.current.value = "";
         }  else {
+
+            if(selectedFile) {
+                const formData = new FormData();   
+                formData.append("myFile", selectedFile, selectedFile.name);
+    
+                const response = await fetch('https://proj1backend.azurewebsites.net/upload', {
+                    method: 'POST',
+                    body: formData
+                })
+    
+                reimbursement.imageUrl = await response.text();
+                fileInput.current.value = "";
+            }
 
             const response = await fetch('https://proj1backend.azurewebsites.net/reimbursements', {
                 method: 'POST',
@@ -49,11 +64,12 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
     return(<>
         <h3 style={{color: "#606c76"}}>Reimbursement Submission Form</h3>
 
-        <label htmlFor="amountInput">Amount</label>
+        <label htmlFor="amountInput">Amount:</label>
         <input ref={amountInput} type="number" id="amountInput" placeholder="50" min={0}/>
-        <label htmlFor="reasonInput">Reason</label>
+        <label htmlFor="reasonInput">Reason:</label>
         <input ref={reasonInput} type="text" id="reasonInput" placeholder="Gas"/>
-
+        <label htmlFor="fileUpload">File to Upload (optional):</label>
+        <input ref={fileInput} type={'file'} id="fileUpload" name="myFile" onChange={(e) => setSelectedFile(e.target.files[0])}/>
         <button onClick={submitReimbursement}>Submit</button>
     </>)
 }

@@ -5,7 +5,7 @@ export default function ReimbursementRow(props: Reimbursement){
 
     return(<tr>
         <td>{ownerName}</td>
-        <td>{amount}</td>
+        <td>${amount}</td>
         <td>{reason}</td>
         <td>{isApproved}</td>
         <td>{mgrComment}</td>
