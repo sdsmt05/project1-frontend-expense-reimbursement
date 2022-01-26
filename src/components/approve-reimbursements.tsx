@@ -31,6 +31,7 @@ export default function ApproveReimbursements(){
 
     return(<>
         <Header/>
+        <hr/>
         <h3 style={{color: "#606c76"}}>Reimbursements Needing Approval</h3>
         {openReimbursements[0] ? <ApproveReimbursementsTable openReimbursements={openReimbursements}  closedReimbursements={closedReimbursements} setOpenReim={setOpenReimbursements} setClosedReim={setClosedReimbursements}/> : <h4>**No Open Reimbursements**</h4>}
         <ClosedReimbursements reimbursements={closedReimbursements}/>

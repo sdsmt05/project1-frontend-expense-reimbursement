@@ -29,7 +29,9 @@ export default function ManagerHomePage(){
     return(<>
         {closedReimbursements ? <>
         <Header/>
+        <hr/>
         <h1 style={{color: "#6d6477"}}>Manager Home Page</h1>
+        <hr/>
         <ReimbursementForm reimbursements={openReimbursements} setReimbursements={setOpenReimbursements}/>
         <OpenReimbursements reimbursements={openReimbursements}/>
         <ClosedReimbursements reimbursements={closedReimbursements}/>

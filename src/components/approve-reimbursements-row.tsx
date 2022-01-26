@@ -3,7 +3,7 @@ import Reimbursement, { IsApproved } from "../dtos/dtos";
 
 export default function ApproveReimbursementsRow(props: {reimbursement: Reimbursement, openReimbursements: Reimbursement[], closedReimbursements: Reimbursement[], setOpenReim: Function, setClosedReim: Function}){
     const {reimbursement, openReimbursements, closedReimbursements, setOpenReim, setClosedReim} = props;
-    const {id, ownerName, amount, reason, isApproved, mgrComment} = reimbursement;
+    const {id, ownerName, amount, reason, isApproved, mgrComment, imageUrl} = reimbursement;
     const mgrInput = useRef(null);
 
     const updatedReimbursement: Reimbursement = {...reimbursement};
@@ -38,6 +38,7 @@ export default function ApproveReimbursementsRow(props: {reimbursement: Reimburs
         <td>{reason}</td>
         <td>{isApproved}</td>
         <td><input ref={mgrInput} type="text"/></td>
+        <td>{imageUrl ? <button onClick={e => window.location.href=`${imageUrl}`}>Download</button> : "-"}</td>
         <td>
             <button value={IsApproved.yes} style={{backgroundColor: "green"}} onClick={updateReimbursement}>Approve</button>
             <button value={IsApproved.no} style={{backgroundColor: "red"}} onClick={updateReimbursement}>Deny</button>

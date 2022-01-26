@@ -15,6 +15,7 @@ export default function ReimbursementTable(props: {reimbursements: Reimbursement
                     <th>Reason</th>
                     <th>Approved?</th>
                     <th>Manager Comment</th>
+                    <th>Receipt</th>
                 </tr>
             </thead>
             <tbody>

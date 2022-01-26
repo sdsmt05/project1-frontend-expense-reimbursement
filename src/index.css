@@ -38,11 +38,18 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   height: 5px;
-  background-color: white;
+  background-color: #7a7685;
+  border-color: #7a7685;
 }
 
-h1, h3, h4 {
+h1, h4 {
   text-align: center;
+}
+
+h3 {
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 code {

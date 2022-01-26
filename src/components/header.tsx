@@ -10,8 +10,8 @@ export default function Header(){
         window.location.reload();
     }
 
-    return(<div style={{display: "flex"}}>
-        <h1 style={{marginLeft: "auto", color: "#4e55a7"}}>Welcome, {sessionStorage.getItem("name")}</h1>
-        <button style={{marginLeft: "auto", alignSelf: "center"}} onClick={logout}>Logout</button>
+    return(<div style={{display: "flex", justifyContent: "center"}}>
+        <h1 style={{color: "#4e55a7"}}>Welcome, {sessionStorage.getItem("name")}</h1>
+        <button style={{marginLeft: 30, alignSelf: "center"}} onClick={logout}>Logout</button>
     </div>)
 }

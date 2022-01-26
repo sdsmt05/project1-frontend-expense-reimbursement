@@ -27,19 +27,26 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
         } else if(reimbursement.amount <= 0){
             alert("Amount should be a positive number.");
             amountInput.current.value = "";
-        }  else {
+        } else if(selectedFile.size / 1024 / 1024 > 2){
+            alert("Files larger than 2MB are not allowed");
+            fileInput.current.value = "";
+            selectedFile(null);
+        } else {
 
             if(selectedFile) {
+
                 const formData = new FormData();   
                 formData.append("myFile", selectedFile, selectedFile.name);
-    
+        
                 const response = await fetch('https://proj1backend.azurewebsites.net/upload', {
                     method: 'POST',
                     body: formData
                 })
-    
-                reimbursement.imageUrl = await response.text();
+        
+                reimbursement.imageUrl = await response.text();  
+                
                 fileInput.current.value = "";
+                selectedFile(null);
             }
 
             const response = await fetch('https://proj1backend.azurewebsites.net/reimbursements', {

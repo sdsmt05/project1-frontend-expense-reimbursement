@@ -15,6 +15,7 @@ export default function ApproveReimbursementsTable(props: {openReimbursements: R
                     <th>Reason</th>
                     <th>Approved?</th>
                     <th>Manager Comment</th>
+                    <th>Receipt</th>
                     <th>Action</th>
                 </tr>
             </thead>
