@@ -1,4 +1,4 @@
-import Reimbursement, { IsApproved } from "../dtos/dtos";
+import Reimbursement from "../dtos/dtos";
 import ReimbursementRow from "./reimbursement-row";
 
 export default function ReimbursementTable(props: {reimbursements: Reimbursement[]}){

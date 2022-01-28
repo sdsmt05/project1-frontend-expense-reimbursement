@@ -3,7 +3,7 @@ import Reimbursement, { IsApproved } from "../dtos/dtos";
 
 export default function ApproveReimbursementsRow(props: {reimbursement: Reimbursement, openReimbursements: Reimbursement[], closedReimbursements: Reimbursement[], setOpenReim: Function, setClosedReim: Function}){
     const {reimbursement, openReimbursements, closedReimbursements, setOpenReim, setClosedReim} = props;
-    const {id, ownerName, amount, reason, isApproved, mgrComment, imageUrl} = reimbursement;
+    const {id, ownerName, amount, reason, isApproved, imageUrl} = reimbursement;
     const mgrInput = useRef(null);
 
     const updatedReimbursement: Reimbursement = {...reimbursement};
