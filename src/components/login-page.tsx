@@ -43,8 +43,8 @@ export default function LoginPage(props: {updateUser: Function}){
         }
     }
 
-    return(<>
-        <h1>Login Page</h1>
+    return(<div id="login">
+        <h1 style={{color: "#4e55a7"}}>RMS Login</h1>
 
         <label htmlFor="usernameInput">Username</label>
         <input ref={usernameInput} type="text" id="usernameInput" required/>
@@ -54,5 +54,5 @@ export default function LoginPage(props: {updateUser: Function}){
 
         <button onClick={login}>Login</button>
 
-    </>);
+    </div>);
 }
