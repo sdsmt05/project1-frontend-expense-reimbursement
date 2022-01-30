@@ -69,7 +69,7 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
     }
 
     return(<>
-        <h3 style={{color: "#606c76"}}>Reimbursement Submission Form</h3>
+        <h2 style={{color: "#606c76"}}>Reimbursement Submission Form</h2>
 
         <label htmlFor="amountInput">Amount:</label>
         <input ref={amountInput} type="number" id="amountInput" placeholder="50" min={0}/>

@@ -16,7 +16,7 @@ export default function StatisticsTable(props: {reimbursements: Reimbursement[]}
     }
 
     return(<>
-        <h3 style={{color: "#606c76"}}>General Statistics</h3>
+        <h2 style={{color: "#606c76"}}>General Statistics</h2>
         <table>
             <thead>
                 <tr>

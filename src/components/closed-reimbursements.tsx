@@ -6,7 +6,7 @@ export default function ClosedReimbursements(props: {reimbursements: Reimburseme
     const reimbursements = props.reimbursements;
 
     return(<>
-        <h3 style={{color: "#606c76"}}>Closed Reimbursement Requests</h3>
+        <h2 style={{color: "#606c76"}}>Closed Reimbursement Requests</h2>
         {reimbursements[0] ? <ReimbursementTable reimbursements={reimbursements}/> : <h4>**No Closed Reimbursements**</h4>}
     </>);
 }
