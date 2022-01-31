@@ -27,7 +27,7 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
         } else if(reimbursement.amount <= 0){
             alert("Amount should be a positive number.");
             amountInput.current.value = "";
-        } else if(selectedFile.size / 1024 / 1024 > 2){
+        } else if(selectedFile.size / 1024 / 1024 > 2 ?? false){
             alert("Files larger than 2MB are not allowed");
             fileInput.current.value = "";
             selectedFile(null);
