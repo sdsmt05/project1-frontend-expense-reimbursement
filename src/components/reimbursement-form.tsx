@@ -28,12 +28,12 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
         } else if(reimbursement.amount <= 0){
             alert("Amount should be a positive number.");
             amountInput.current.value = "";
-        } else if(selectedFile !== null){
-                if( selectedFile.size / 1024 / 1024 > 2){
-                    alert("Files larger than 2MB are not allowed");
-                    fileInput.current.value = "";
-                    setSelectedFile(null);
-                }
+        // } else if(selectedFile !== null){
+        //         if( selectedFile.size / 1024 / 1024 > 2){
+        //             alert("Files larger than 2MB are not allowed");
+        //             fileInput.current.value = "";
+        //             setSelectedFile(null);
+        //         }    
         } else {
 
             if(selectedFile) {
