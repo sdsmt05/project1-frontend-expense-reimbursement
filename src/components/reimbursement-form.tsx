@@ -22,17 +22,18 @@ export default function ReimbursementForm(props: {reimbursements: Reimbursement[
             isApproved: IsApproved.pending
         }
 
-        const fileSize = selectedFile.size / 1024 / 1024 ?? 0;
 
         if(!reimbursement.amount || !reimbursement.reason){
             alert("Invalid submission: Either the Amount or Reason is missing");
         } else if(reimbursement.amount <= 0){
             alert("Amount should be a positive number.");
             amountInput.current.value = "";
-        } else if(fileSize > 2){
-            alert("Files larger than 2MB are not allowed");
-            fileInput.current.value = "";
-            setSelectedFile(null);
+        } else if(selectedFile !== null){
+                if( selectedFile.size / 1024 / 1024 > 2){
+                    alert("Files larger than 2MB are not allowed");
+                    fileInput.current.value = "";
+                    setSelectedFile(null);
+                }
         } else {
 
             if(selectedFile) {
